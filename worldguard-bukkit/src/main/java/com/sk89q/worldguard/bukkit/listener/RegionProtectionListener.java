@@ -413,13 +413,13 @@ public class RegionProtectionListener extends AbstractListener {
         /* Paintings, item frames, etc. */
         } else if (Entities.isConsideredBuildingIfUsed(entity)
                 // weird case since sneak+interact is chest access and not ride
-                || type == EntityType.CHEST_BOAT && event.getOriginalEvent() instanceof InventoryOpenEvent) {
+                || Entities.isChestBoat(entity.getType()) && event.getOriginalEvent() instanceof InventoryOpenEvent) {
             if ((type == EntityType.ITEM_FRAME || type == EntityType.GLOW_ITEM_FRAME)
                     && event.getCause().getFirstPlayer() != null
                     && ((ItemFrame) entity).getItem().getType() != Material.AIR) {
                 canUse = query.testBuild(BukkitAdapter.adapt(target), associable, combine(event, Flags.ITEM_FRAME_ROTATE));
                 what = "change that";
-            } else if (Entities.isMinecart(type) || type == EntityType.CHEST_BOAT) {
+            } else if (Entities.isMinecart(type) || Entities.isChestBoat(entity.getType())) {
                 canUse = query.testBuild(BukkitAdapter.adapt(target), associable, combine(event, Flags.CHEST_ACCESS));
                 what = "open that";
             } else {

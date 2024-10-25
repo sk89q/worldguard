@@ -69,7 +69,6 @@ public final class Materials {
         ENTITY_ITEMS.put(EntityType.TNT, Material.TNT);
         ENTITY_ITEMS.put(EntityType.FIREWORK_ROCKET, Material.FIREWORK_ROCKET);
         ENTITY_ITEMS.put(EntityType.COMMAND_BLOCK_MINECART, Material.COMMAND_BLOCK_MINECART);
-        ENTITY_ITEMS.put(EntityType.BOAT, Material.OAK_BOAT);
         ENTITY_ITEMS.put(EntityType.MINECART, Material.MINECART);
         ENTITY_ITEMS.put(EntityType.CHEST_MINECART, Material.CHEST_MINECART);
         ENTITY_ITEMS.put(EntityType.FURNACE_MINECART, Material.FURNACE_MINECART);
@@ -79,6 +78,15 @@ public final class Materials {
         ENTITY_ITEMS.put(EntityType.EGG, Material.EGG);
         ENTITY_ITEMS.put(EntityType.ARMOR_STAND, Material.ARMOR_STAND);
         ENTITY_ITEMS.put(EntityType.END_CRYSTAL, Material.END_CRYSTAL);
+
+        for (String wood : new String[]{"OAK", "SPRUCE", "BIRCH", "JUNGLE", "ACACIA", "DARK_OAK", "MANGROVE", "CHERRY", "PALE_OAK"}) {
+            String regular = wood + "_BOAT";
+            String chest = wood + "_CHEST_BOAT";
+            ENTITY_ITEMS.put(EntityType.valueOf(regular), Material.getMaterial(regular));
+            ENTITY_ITEMS.put(EntityType.valueOf(chest), Material.getMaterial(chest));
+        }
+        ENTITY_ITEMS.put(EntityType.BAMBOO_RAFT, Material.BAMBOO_RAFT);
+        ENTITY_ITEMS.put(EntityType.BAMBOO_CHEST_RAFT, Material.BAMBOO_CHEST_RAFT);
 
         // preset some tags to a default value, override some of them:
         putMaterialTag(Tag.DOORS, MODIFIED_ON_RIGHT);
@@ -877,6 +885,7 @@ public final class Materials {
 
         putMaterialTag(Tag.SHULKER_BOXES, MODIFIED_ON_RIGHT);
         putMaterialTag(Tag.ITEMS_BOATS, 0);
+        putMaterialTag(Tag.ITEMS_CHEST_BOATS, 0);
         putMaterialTag(Tag.BANNERS, 0);
         putMaterialTag(Tag.SLABS, 0);
         putMaterialTag(Tag.PLANKS, 0);
@@ -1131,7 +1140,7 @@ public final class Materials {
      * @return true if a Boat item
      */
     public static boolean isBoat(Material material) {
-        return Tag.ITEMS_BOATS.isTagged(material);
+        return Tag.ITEMS_BOATS.isTagged(material) || Tag.ITEMS_CHEST_BOATS.isTagged(material);
     }
 
     /**
