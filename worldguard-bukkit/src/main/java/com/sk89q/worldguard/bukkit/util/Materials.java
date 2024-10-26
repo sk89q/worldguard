@@ -1140,7 +1140,7 @@ public final class Materials {
      * @return true if a Boat item
      */
     public static boolean isBoat(Material material) {
-        return Tag.ITEMS_BOATS.isTagged(material) || Tag.ITEMS_CHEST_BOATS.isTagged(material);
+        return Tag.ITEMS_BOATS.isTagged(material);
     }
 
     /**
