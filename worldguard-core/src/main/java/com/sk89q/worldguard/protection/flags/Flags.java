@@ -66,6 +66,7 @@ public final class Flags {
     public static final StateFlag CHEST_ACCESS = register(new StateFlag("chest-access", false));
     public static final StateFlag PLACE_VEHICLE = register(new StateFlag("vehicle-place", false));
     public static final StateFlag DESTROY_VEHICLE = register(new StateFlag("vehicle-destroy", false));
+    public static final StateFlag DAMAGE_VEHICLE = register(new StateFlag("vehicle-damage", false));
     public static final StateFlag LIGHTER = register(new StateFlag("lighter", false));
     public static final StateFlag RIDE = register(new StateFlag("ride", false));
     public static final StateFlag POTION_SPLASH = register(new StateFlag("potion-splash", false));
