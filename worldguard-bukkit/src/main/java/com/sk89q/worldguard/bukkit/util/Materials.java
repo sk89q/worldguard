@@ -23,6 +23,7 @@ import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
 import com.sk89q.worldguard.protection.flags.Flags;
 import org.bukkit.Material;
+import org.bukkit.Registry;
 import org.bukkit.Tag;
 import org.bukkit.entity.EntityType;
 import org.bukkit.potion.PotionEffect;
@@ -934,8 +935,7 @@ public final class Materials {
         });
 
         // Check for missing items/blocks
-        for (Material material : Material.values()) {
-            if (material.isLegacy()) continue;
+        Registry.MATERIAL.stream().forEach(material -> {
             // Add spawn eggs
             if (isSpawnEgg(material)) {
                 MATERIAL_FLAGS.put(material, 0);
@@ -946,7 +946,7 @@ public final class Materials {
             if (!MATERIAL_FLAGS.containsKey(material)) {
                 logger.fine("Missing material definition for " + (material.isBlock() ? "block " : "item ") + material.name());
             }
-        }
+        });
 
 //        DAMAGE_EFFECTS.add(PotionEffectType.SPEED);
         DAMAGE_EFFECTS.add(PotionEffectType.SLOWNESS);
