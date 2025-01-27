@@ -58,6 +58,7 @@ public abstract class YamlConfigurationManager extends ConfigurationManager {
         useRegionsCreatureSpawnEvent = config.getBoolean("regions.use-creature-spawn-event", true);
         disableDefaultBypass = config.getBoolean("regions.disable-bypass-by-default", false);
         announceBypassStatus = config.getBoolean("regions.announce-bypass-status", false);
+        disableRegionInRegion = config.getBoolean("disable-region-in-region", false);
 
         useGodPermission = config.getBoolean("auto-invincible", config.getBoolean("auto-invincible-permission", false));
         useGodGroup = config.getBoolean("auto-invincible-group", false);

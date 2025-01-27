@@ -169,6 +169,22 @@ class RegionCommandsBase {
         return region;
     }
 
+    /**
+     * Checks if the given region is within any region and if so throws a {@link CommandException}.
+     *
+     * @param regionManager the region manager
+     * @param region the region to check
+     * @throws CommandException thrown if a region was found within a region
+     */
+    protected static void checkRegionInRegion(RegionManager regionManager, ProtectedRegion region) throws CommandException {
+        boolean disableRegionInRegion = WorldGuard.getInstance().getPlatform().getGlobalStateManager().disableRegionInRegion;
+
+        if (disableRegionInRegion) {
+            if (!region.getIntersectingRegions(regionManager.getRegions().values()).isEmpty()) {
+                throw new CommandException("Region " + region.getId() + " cannot be defined within another region");
+            }
+        }
+    }
 
     /**
      * Get the region at the player's location, if possible.

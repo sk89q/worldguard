@@ -160,6 +160,8 @@ public final class RegionCommands extends RegionCommandsBase {
             region = checkRegionFromSelection(sender, id);
         }
 
+        checkRegionInRegion(manager, region);
+
         RegionAdder task = new RegionAdder(manager, region);
         task.addOwnersFromCommand(args, 2);
 
@@ -211,6 +213,8 @@ public final class RegionCommands extends RegionCommandsBase {
         } else {
             region = checkRegionFromSelection(sender, id);
         }
+
+        checkRegionInRegion(manager, region);
 
         region.copyFrom(existing);
 
